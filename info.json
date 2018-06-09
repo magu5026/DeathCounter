@@ -1,9 +1,9 @@
 {
 	"name":"DeathCounter",
 	"author":"magu5026",
-	"version":"0.15.0",
+	"version":"0.16.1",
 	"title":"Death Counter",
 	"description":"Death Counter",
-	"factorio_version":"0.15",
-	"dependencies": ["base >= 0.15.31"]
+	"factorio_version":"0.16",
+	"dependencies": ["base >= 0.16.0"]
 }

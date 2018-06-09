@@ -1,5 +1,3 @@
-Libary = Libary or {}
-
 function NeedMigration(data,modname)
 	if data 
 	 and data.mod_changes 
@@ -22,32 +20,34 @@ function FormatVersion(version)
 	return string.format("%02d.%02d.%02d", string.match(version, "(%d+).(%d+).(%d+)"))
 end
 
-function Contains(tab,element)
-	for _,item in pairs(tab) do
-		if item == element then
+function Contains(tab,elem)
+	for _,v in pairs(tab) do
+		if v == elem then
+			return true
+		elseif type(v) == "table" then
+			if Contains(v,elem) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function Remove(tab,elem)
+	for i,v in pairs(tab) do
+		if v == elem then
+			table.remove(tab,i)
 			return true
 		end
 	end
 	return false
 end
 
-function Libary:add(num)
-	self = self + num
-end
 
-function Libary:sub(num)
-	self = self - num
-end
-
-function Libary:remove(item)
-	for i,v in pairs(self) do
-		if v == item then
-			table.remove(self,i)
-			break
-		end
+function Count(list)
+	local i = 0
+	for _ in pairs(list) do
+		i = i + 1
 	end
-end
-
-function Libary:insert(item)
-	table.insert(self,item)
+	return i
 end

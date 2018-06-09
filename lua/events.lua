@@ -31,7 +31,7 @@ local function DrawGuiPlayerDeath(player,death_list)
 	if main_body.deathlist then
 		main_body.deathlist.destroy()
 	end
-	local death_list_table = main_body.add{type = "table", name = "deathlist", colspan = 2}
+	local death_list_table = main_body.add{type = "table", name = "deathlist", column_count = 2}
 	death_list_table.add{type = "label", name = "causename", caption = {"deathcounter_deathlist_name"}}
 	death_list_table.add{type = "label", name = "causecount", caption = {"deathcounter_deathlist_count"}}
 	if #death_list == 0 then
@@ -71,7 +71,7 @@ local function DrawGui(player)
 	if player.gui.center.dc.mainflow then player.gui.center.dc.mainflow.destroy() end
 	local main_flow = player.gui.center.dc.add{type = "flow", name = "mainflow", direction = "horizontal"}
 	local main_header = main_flow.add{type = "flow", name = "mainheader", direction = "vertical"}
-	main_flow.add{type = "sprite-button", name = "closedc", style = "red_slot_button_style", sprite = "utility/set_bar_slot"}
+	main_flow.add{type = "sprite-button", name = "closedc", style = "red_slot_button", sprite = "utility/set_bar_slot"}
 	main_header.add{type = "label", name = "mainheaderlabel", caption = {"deathcounter_deathlist"}}
 	main_header.mainheaderlabel.style.font = "default-button"
 	local main_body = main_header.add{type = "flow", name = "mainbody", direction = "horizontal"}
@@ -111,7 +111,6 @@ local function GuiClick(event)
 end
 
 local function PlayerDied(event)
-	--global.DeathCounter.Count:add(1)
 	global.DeathCounter.Count = global.DeathCounter.Count + 1
 	local index = event.player_index
 	local player = game.players[index]
@@ -156,7 +155,6 @@ end
 
 function on_configuration_changed(data)
 	Init()
-	--Migration(data)
 end	
 
 function on_gui_click(event)
